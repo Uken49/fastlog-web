@@ -1,0 +1,37 @@
+{
+  "name": "web-fastlog",
+  "version": "1.0.0",
+  "description": "Aplicação web do fastlog integrado com a api-rastreamento",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Uken49/web-fastlog.git"
+  },
+  "contributors": [
+    {
+      "name": "Helder Davidson Rodrigues Alvarenga",
+      "email": "heldergavioes@hotmail.com"
+    },
+    {
+      "name": "Pedro Henrique Dias"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Uken49/web-fastlog/issues"
+  },
+  "homepage": "https://github.com/Uken49/web-fastlog#readme",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
