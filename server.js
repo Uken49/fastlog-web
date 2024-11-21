@@ -81,5 +81,5 @@ app.get("/rastrear/:idEncomenda", async (req, res) => {
 
 
 app.listen(app_port, () => {
-    console.log(`Servidor rodando na url http://${app_url}:${app_port}`)
+    console.log(`Servidor rodando na url ${app_url}:${app_port}`)
 })
