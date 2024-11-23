@@ -6,11 +6,6 @@ on:
       - closed
   workflow_dispatch:
 
-    
-env:
-  DOCKER_USERNAME: uken49
-  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-
 jobs:
 
   deploy:
