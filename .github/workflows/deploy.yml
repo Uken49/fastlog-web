@@ -14,9 +14,12 @@ jobs:
 
     env:
       IMAGE_VERSION: ${{ github.run_number }}
-      
+
     steps:
     - uses: actions/checkout@v4
+
+    - name: Login no Docker Hub
+      run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u uken49 --password-stdin
 
     - name: Construindo container
       run: docker build . --file Dockerfile --tag uken49/web-fastlog:${{ env.IMAGE_VERSION }}
