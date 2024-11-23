@@ -12,12 +12,15 @@ jobs:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
 
+    env: 
+      IMAGE_VERSION: $(date +%s)
+
     steps:
     - uses: actions/checkout@v4
 
     - name: Construindo container
-      run: docker build . --file Dockerfile --tag uken49/api-rastreamento:$(date +%s)
+      run: docker build . --file Dockerfile --tag uken49/web-fastlog:$IMAGE_VERSION
   
     - name: Enviando imagem para Docker Hub
-      run: docker push uken49/api-rastreamento:$(date +%s)
+      run: docker push uken49/api-rastreamento:$IMAGE_VERSION
   
