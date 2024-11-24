@@ -12,9 +12,6 @@ jobs:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
 
-    env:
-      IMAGE_VERSION: ${{ github.run_number }}
-    
     steps:
     - uses: actions/checkout@v4
 
@@ -24,8 +21,12 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USER }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Construindo container
-      run: docker build . --file Dockerfile --tag uken49/web-fastlog:${{ env.IMAGE_VERSION }}
-  
-    - name: Enviando imagem para Docker Hub
-      run: docker push uken49/web-fastlog:${{ env.IMAGE_VERSION }}
+    - name: Configurar TAG
+      id: vars
+      run: echo "IMAGE_VERSION=$(date +%s)" >> $GITHUB_ENV
+
+    - name: Construir e enviar imagem
+      run: |
+        docker build -t uken49/web-fastlog:${{ env.IMAGE_VERSION }} -t uken49/web-fastlog:latest .
+        docker push uken49/web-fastlog:${{ env.IMAGE_VERSION }}
+        docker push uken49/web-fastlog:latest
