@@ -30,3 +30,15 @@ jobs:
         docker build -t uken49/web-fastlog:${{ env.IMAGE_VERSION }} -t uken49/web-fastlog:latest .
         docker push uken49/web-fastlog:${{ env.IMAGE_VERSION }}
         docker push uken49/web-fastlog:latest
+
+    - name: Update ECS Service
+      run: |
+        aws ecs update-service \
+          --cluster fastlog_rastreamento \
+          --service service-web \
+          --force-new-deployment
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+        AWS_REGION: us-east-1
