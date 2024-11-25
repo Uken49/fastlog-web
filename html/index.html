@@ -70,7 +70,7 @@
         <div class="row">
             <div class="col-12">
                 <form class="form-class produto" method="GET"
-                    onsubmit="this.action = `http:/\/localhost:3000/rastrear/${document.getElementById('idEncomenda').value}`">
+                    onsubmit="this.action = `${window.location.origin}/rastrear/${document.getElementById('idEncomenda').value}`">
                     <div class="mb-3">
                         <label for="idEncomenda" class="form-label">
                             Deseja acompanhar seu objeto?<br>
