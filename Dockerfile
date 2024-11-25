@@ -3,12 +3,13 @@ FROM node:22.11
 WORKDIR /usr/src/app
 
 COPY package*.json ./
+COPY server.js ./
+COPY html/ ./html/
 
 RUN npm install
 
-COPY . .
+ENV RASTREAMENTO=http://localhost:8000/rastreamento
 
-EXPOSE 3000
-
-# Comando padrão para iniciar a aplicação
 CMD ["npm", "start"]
+
+EXPOSE 80
